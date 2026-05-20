@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuvraj Singh Thakur — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D98A;
+    --dark: #0D0D0D;
+    --dark2: #141414;
+    --dark3: #1C1C1C;
+    --dark4: #252525;
+    --cream: #F5F0E8;
+    --cream2: #EDE5D4;
+    --text: #F5F0E8;
+    --text-muted: #9A9084;
+    --accent: #C9A84C;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-title {
+    font-size: 1.1rem; font-weight: 300; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 2rem;
+    border-left: 2px solid var(--gold);
+    padding-left: 1rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    padding: 0.8rem 2rem; border-radius: 4px;
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em;
+    text-decoration: none; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.4); color: var(--gold);
+    padding: 0.8rem 2rem; border-radius: 4px;
+    font-weight: 500; font-size: 0.9rem; letter-spacing: 0.05em;
+    text-decoration: none; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+
+  /* HERO RIGHT — stats */
+  .hero-right {
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 12px; padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+  .stat-card:hover { border-color: rgba(201,168,76,0.35); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  }
+  .stat-label { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+  /* SECTION BASE */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-tag {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-tag::before { content: ''; height: 1px; width: 32px; background: var(--gold); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.15;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.8; color: rgba(245,240,232,0.8);
+    margin-bottom: 1.25rem;
+  }
+  .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+  .highlight-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    background: var(--dark3); border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 10px; padding: 1.2rem;
+  }
+  .highlight-icon {
+    width: 40px; height: 40px; min-width: 40px;
+    background: rgba(201,168,76,0.12); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .highlight-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .highlight-text p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* EXPERIENCE */
+  .exp-bg { background: var(--dark2); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(245,240,232,0.07);
+    position: relative;
+  }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-date {
+    font-size: 0.82rem; font-weight: 500; color: var(--gold);
+    padding-top: 0.2rem;
+  }
+  .exp-duration {
+    font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;
+  }
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; margin-bottom: 0.2rem;
+  }
+  .exp-company {
+    font-size: 0.9rem; color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .exp-desc {
+    font-size: 0.9rem; color: rgba(245,240,232,0.7); line-height: 1.7;
+  }
+  .exp-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+  .skill-tag {
+    font-size: 0.75rem; font-weight: 500;
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+    color: var(--gold); padding: 0.25rem 0.75rem; border-radius: 100px;
+  }
+
+  /* VENTURES */
+  .ventures-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .venture-card {
+    background: var(--dark3);
+    border: 1px solid rgba(245,240,232,0.07);
+    border-radius: 16px; padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .venture-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+  }
+  .venture-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .venture-card:hover::before { transform: scaleX(1); }
+  .venture-icon {
+    width: 52px; height: 52px;
+    background: rgba(201,168,76,0.1); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.25rem;
+  }
+  .venture-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .venture-role {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .venture-desc { font-size: 0.87rem; color: rgba(245,240,232,0.65); line-height: 1.6; }
+
+  /* SKILLS */
+  .skills-bg { background: var(--dark2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .skill-category h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--gold); margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .skill-bubbles { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .skill-bubble {
+    font-size: 0.82rem; font-weight: 500;
+    background: var(--dark4); border: 1px solid rgba(245,240,232,0.1);
+    color: rgba(245,240,232,0.85); padding: 0.4rem 1rem; border-radius: 100px;
+    transition: all 0.25s;
+  }
+  .skill-bubble:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.3);
+    color: var(--gold);
+  }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .cert-item {
+    background: var(--dark3);
+    border: 1px solid rgba(245,240,232,0.07);
+    border-radius: 10px; padding: 1.1rem 1.25rem;
+    transition: border-color 0.3s;
+  }
+  .cert-item:hover { border-color: rgba(201,168,76,0.25); }
+  .cert-issuer {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem;
+  }
+  .cert-name { font-size: 0.85rem; font-weight: 500; line-height: 1.4; }
+
+  /* EDUCATION */
+  .edu-bg { background: var(--dark2); }
+  .edu-card {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 16px; padding: 2.5rem;
+    display: flex; gap: 2rem; align-items: center;
+    max-width: 600px;
+  }
+  .edu-icon {
+    width: 64px; height: 64px; min-width: 64px;
+    background: rgba(201,168,76,0.12); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+  }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .edu-school { font-size: 0.95rem; color: var(--gold); font-weight: 500; }
+  .edu-info { font-size: 0.83rem; color: var(--text-muted); margin-top: 0.4rem; }
+
+  /* CONTACT */
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .contact-text p {
+    font-size: 1rem; color: rgba(245,240,232,0.7); line-height: 1.8; margin-bottom: 2rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; color: var(--text);
+    background: var(--dark3); border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    transition: all 0.3s;
+  }
+  .contact-link:hover { border-color: rgba(201,168,76,0.3); color: var(--gold); }
+  .contact-link-icon {
+    width: 36px; height: 36px; background: rgba(201,168,76,0.12);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .contact-link span { font-size: 0.9rem; font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid rgba(245,240,232,0.07);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 0.82rem; color: var(--text-muted); }
+  .footer-gold { color: var(--gold); }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: rgba(245,240,232,0.07); }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { animation: fadeInUp 0.7s ease both; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.5s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, section { padding: 5rem 1.5rem 3rem; }
+    .hero-grid, .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .ventures-grid, .certs-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">YST</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#ventures">Ventures</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">President · Founder · Leader</div>
+      <h1 class="hero-name">Yuvraj<br><span>Singh Thakur</span></h1>
+      <p class="hero-title">
+        President — Thrive Skills Educational Society<br>
+        Stanford Certified in Food &amp; Health | Public Health &amp; Nutrition<br>
+        Logistics &amp; Operations Leader · ECE Engineer (RGPV)
+      </p>
+      <div class="hero-cta">
+        <a href="#ventures" class="btn-primary">My Ventures</a>
+        <a href="https://www.linkedin.com/in/yuvraj-singh-thakur-177119226/" target="_blank" class="btn-outline">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="stat-card">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Ventures Founded</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Companies Worked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Driven by Purpose,<br>Powered by Skills</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm Yuvraj Singh Thakur — an engineer, entrepreneur, and community builder from Madhya Pradesh. With a background in Electronics &amp; Communication Engineering from RGPV and Stanford certification in Food &amp; Health, I sit at a unique intersection of technology, health, and social impact.</p>
+        <p>Over 8+ years, I've led logistics operations at Amazon, Flipkart, and Ecom Express, managing station-level teams and daily loads of 2,500+ shipments. Today, I channel that operational expertise into building institutions that create lasting impact.</p>
+        <p>My mission: empower youth through skill-based education, promote public health awareness, and build communities that thrive through discipline and excellence.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🎓</div>
+          <div class="highlight-text">
+            <h4>Stanford Certified</h4>
+            <p>Introduction to Food &amp; Health — Public Health &amp; Nutrition</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">⚙️</div>
+          <div class="highlight-text">
+            <h4>ECE Engineer</h4>
+            <p>Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🏆</div>
+          <div class="highlight-text">
+            <h4>Operations Leader</h4>
+            <p>5 years at Annapoorna Logistics · Amazon · Flipkart</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🌱</div>
+          <div class="highlight-text">
+            <h4>Skill Development Advocate</h4>
+            <p>Leading youth empowerment &amp; health awareness initiatives</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENTURES -->
+<section id="ventures" style="background: var(--dark2);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Founded Ventures</div>
+      <h2 class="section-title">Building Institutions<br>That Last</h2>
+    </div>
+    <div class="ventures-grid">
+      <div class="venture-card">
+        <div class="venture-icon">🎓</div>
+        <div class="venture-name">Thrive Skills Educational Society</div>
+        <div class="venture-role">Founder &amp; President</div>
+        <div class="venture-desc">A skill-based education initiative focused on empowering youth with practical, job-ready skills. Dedicated to bridging the gap between conventional education and real-world requirements through hands-on learning and community programs.</div>
+      </div>
+      <div class="venture-card">
+        <div class="venture-icon">🏛️</div>
+        <div class="venture-name">Thrive Skills Institute</div>
+        <div class="venture-role">Founder</div>
+        <div class="venture-desc">An institution built to deliver structured skill development programs. Providing courses, workshops, and certifications designed to create employment-ready individuals aligned with industry demands.</div>
+      </div>
+      <div class="venture-card">
+        <div class="venture-icon">🥊</div>
+        <div class="venture-name">Thrive Vanguard Sports &amp; Combat Academy</div>
+        <div class="venture-role">Founder</div>
+        <div class="venture-desc">A sports and combat training academy focused on physical excellence, discipline, and mental fortitude. Offering training in martial arts, combat sports, and athletics to build strong, resilient individuals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Work Experience</div>
+      <h2 class="section-title">A Decade of<br>Operational Excellence</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">2022 – 2023</div>
+          <div class="exp-duration">~1 Year</div>
+        </div>
+        <div>
+          <div class="exp-role">Area Manager — Flipkart Operations</div>
+          <div class="exp-company">FLPL (First Last &amp; Premium Logistics) · Vendor Partner of Flipkart</div>
+          <div class="exp-desc">Worked as Area Manager handling Flipkart delivery operations through FLPL, an authorised vendor partner. Managed area-level operations, team performance, and last-mile delivery across assigned territories. Left corporate career in 2023 to pursue entrepreneurial ventures full-time.</div>
+          <div class="exp-skills">
+            <span class="skill-tag">Area Management</span>
+            <span class="skill-tag">Last-Mile Delivery</span>
+            <span class="skill-tag">Timekeeping</span>
+            <span class="skill-tag">Data Mining</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">2021</div>
+          <div class="exp-duration">Short Tenure</div>
+        </div>
+        <div>
+          <div class="exp-role">Area Manager (AM)</div>
+          <div class="exp-company">Annapoorna Logistics Pvt. Ltd.</div>
+          <div class="exp-desc">Worked as Area Manager at Annapoorna Logistics. Managed area operations, coordinated with delivery teams, and ensured smooth daily logistical workflows across the assigned zone.</div>
+          <div class="exp-skills">
+            <span class="skill-tag">Area Management</span>
+            <span class="skill-tag">Operations</span>
+            <span class="skill-tag">Team Coordination</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">2019 – 2021</div>
+          <div class="exp-duration">2 Years</div>
+        </div>
+        <div>
+          <div class="exp-role">Logistics Manager</div>
+          <div class="exp-company">FLPL (First Last &amp; Premium Logistics) · Vendor Partner of Amazon</div>
+          <div class="exp-desc">Managed logistics operations as part of FLPL, an authorised Amazon vendor. Handled station-level operations at Anuppur and BPLC Bhopal, managing daily shipment loads of approximately 2,500 packages with full accountability for delivery performance and team management.</div>
+          <div class="exp-skills">
+            <span class="skill-tag">Station Management</span>
+            <span class="skill-tag">Logistics</span>
+            <span class="skill-tag">Data Mining</span>
+            <span class="skill-tag">Operations</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">2018 – 2019</div>
+          <div class="exp-duration">1 Year</div>
+        </div>
+        <div>
+          <div class="exp-role">Logistics Manager</div>
+          <div class="exp-company">Ecom Express Pvt. Ltd.</div>
+          <div class="exp-desc">Responsible for ensuring shipments reached their destination on time. Served as the main point of contact for all logistics-related matters, coordinating between dispatch, delivery executives, and client teams to ensure seamless operations.</div>
+          <div class="exp-skills">
+            <span class="skill-tag">Logistics</span>
+            <span class="skill-tag">Client Coordination</span>
+            <span class="skill-tag">Timekeeping</span>
+            <span class="skill-tag">Dispatch Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Skills &amp; Expertise</div>
+      <h2 class="section-title">A Versatile Skill Set<br>Across Domains</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Operations &amp; Logistics</h3>
+        <div class="skill-bubbles">
+          <span class="skill-bubble">Timekeeping</span>
+          <span class="skill-bubble">Data Mining</span>
+          <span class="skill-bubble">Stakeholder Management</span>
+          <span class="skill-bubble">Station Management</span>
+          <span class="skill-bubble">Last-Mile Delivery</span>
+          <span class="skill-bubble">Cluster Operations</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Business &amp; Analytics</h3>
+        <div class="skill-bubbles">
+          <span class="skill-bubble">Business Analysis</span>
+          <span class="skill-bubble">Project Management</span>
+          <span class="skill-bubble">Requirements Gathering</span>
+          <span class="skill-bubble">Data Analysis</span>
+          <span class="skill-bubble">Microsoft 365</span>
+          <span class="skill-bubble">Budget Development</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Technology &amp; AI</h3>
+        <div class="skill-bubbles">
+          <span class="skill-bubble">Generative AI</span>
+          <span class="skill-bubble">AI Prompt Engineering</span>
+          <span class="skill-bubble">Data Visualization</span>
+          <span class="skill-bubble">Cybersecurity Awareness</span>
+          <span class="skill-bubble">Learning Data Science</span>
+          <span class="skill-bubble">Microsoft Copilot</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Health &amp; Leadership</h3>
+        <div class="skill-bubbles">
+          <span class="skill-bubble">Public Health &amp; Nutrition</span>
+          <span class="skill-bubble">Food &amp; Health Science</span>
+          <span class="skill-bubble">Team Leadership</span>
+          <span class="skill-bubble">Youth Empowerment</span>
+          <span class="skill-bubble">Business Ethics</span>
+          <span class="skill-bubble">Communication</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Licenses &amp; Certifications</div>
+      <h2 class="section-title">30+ Verified<br>Credentials</h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-item">
+        <div class="cert-issuer">Stanford University</div>
+        <div class="cert-name">Introduction to Food and Health</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">Microsoft &amp; LinkedIn</div>
+        <div class="cert-name">Career Essentials in Data Analysis</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Project Management Foundations: Ethics</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Optimizing Your Work with Microsoft 365</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Cybersecurity Awareness: Terminology</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Collaborating with Microsoft 365</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Project Management Foundations: Risk</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Business Analysis Foundations</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">Microsoft &amp; LinkedIn</div>
+        <div class="cert-name">Career Essentials in Generative AI</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Introduction to Artificial Intelligence</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Ethics in the Age of Generative AI</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Agile Requirements Foundations</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Generative AI: Creative Content Opportunities &amp; Ethics</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Introduction to Prompt Engineering for Generative AI</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-name">Streamlining Your Work with Microsoft Copilot</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color: var(--text-muted); margin-top:1.5rem;">+ 15 more certifications in Project Management, Business Analysis, Data Science, and AI</p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="edu-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Education</div>
+      <h2 class="section-title">Academic Foundation</h2>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">B.E. — Electronics &amp; Communication Engineering</div>
+        <div class="edu-school">Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV)</div>
+        <div class="edu-info">Bhopal, Madhya Pradesh · ECE Branch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <div class="section-header">
+          <div class="section-tag">Get In Touch</div>
+          <h2 class="section-title">Let's Build<br>Something Great</h2>
+        </div>
+        <p>Whether you're interested in collaborating on skill development, logistics consulting, health education, or simply want to connect — I'd love to hear from you.</p>
+        <a href="https://www.linkedin.com/in/yuvraj-singh-thakur-177119226/" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none;">Connect on LinkedIn →</a>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/yuvraj-singh-thakur-177119226/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          <span>linkedin.com/in/yuvraj-singh-thakur</span>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon">📍</div>
+          <span>Madhya Pradesh, India</span>
+        </div>
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon">🏫</div>
+          <span>Thrive Skills Educational Society</span>
+        </div>
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon">🏋️</div>
+          <span>Thrive Vanguard Sports &amp; Combat Academy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span class="footer-gold">Yuvraj Singh Thakur</span>. All rights reserved.</p>
+  <p>President · Founder · Engineer · <span class="footer-gold">Thrive Skills Educational Society</span></p>
+</footer>
+
+</body>
+</html>
